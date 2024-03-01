@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Homepage</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8; /* Light Gray Background */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333; /* Dark Gray Background for Header */
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #4caf50; /* Green Background for Navigation */
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+
+        section {
+            margin: 20px;
+        }
+
+        .profile-section {
+            background-color: #ffffff; /* White Background for Profile Section */
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .test-reports-section {
+            background-color: #ffffff; /* White Background for Test Reports Section */
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>User's Website</h1>
+    </header>
+
+    <nav>
+        <a href="#profile">Profile</a>
+        <a href="#test-reports">Test Reports</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="info.html">Info</a>
+    </nav>
+
+    <section id="profile" class="profile-section">
+        <h2>User Profile</h2>
+        <?php
+            // Example PHP code for fetching dynamic user profile data
+            $userId = 123; // Replace with the actual user ID from the login session
+            $userName = "John Doe"; // Replace with actual data retrieval logic
+
+            echo "<p>Name: $userName</p>";
+            echo "<p>User ID: $userId</p>";
+            // Add more user information as needed
+        ?>
+    </section>
+
+    <section id="test-reports" class="test-reports-section">
+        <h2>Test Reports</h2>
+        <p>No test reports available.</p>
+        <!-- Add test reports dynamically if available -->
+    </section>
+
+</body>
+</html>
