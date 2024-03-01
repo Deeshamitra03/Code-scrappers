@@ -1,0 +1,60 @@
+package bytebash;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+
+public class signup3 extends HttpServlet {
+    // JDBC URL, username, and password of MySQL server
+	private static final long serialVersionUID = 1L;
+   
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Retrieve form parameters
+    	response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+        String firstName = request.getParameter("first_name");
+        String lastName = request.getParameter("last_name");
+        String email = request.getParameter("email");
+        String mobileNumber = request.getParameter("mobile_number");
+        String bloodGroup = request.getParameter("blood_group");
+        String address = request.getParameter("address");
+        int age = Integer.parseInt(request.getParameter("age"));
+        String password = request.getParameter("password");
+
+        
+        try
+        {
+        	Class.forName("com.mysql.jdbc.Driver");
+        	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/safecipherhealth","root","Roy232004");
+           
+            PreparedStatement statement = con.prepareStatement("INSERT INTO patients VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                statement.setString(1, firstName);
+                statement.setString(2, lastName);
+                statement.setString(3, email);
+                statement.setString(4, mobileNumber);
+                statement.setString(5, bloodGroup);
+                statement.setString(6, address);
+                statement.setInt(7, age);
+                statement.setString(8, password);
+                
+                // Execute the statement
+                int i = statement.executeUpdate();
+                if (i>0) {
+                    response.sendRedirect("signup_success.html"); // Redirect to success page
+                } 
+            
+        // Redirect to failure page
+        }catch (Exception e2) {System.out.println(e2);}
+			out.close();
+    }
+}
